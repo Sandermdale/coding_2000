@@ -104,6 +104,10 @@ Lag en pen figur som viser BNP i tusener av kroner per person, i både løpende 
 
 ```{r}
 # Oppgave Ib løses her 
+df%>%
+  ggplot(df, aes_(tid, verdi))+
+  geom_point()+
+  geom_line()
 ```
 
 *\[Besvar oppgave 1b her\]*
