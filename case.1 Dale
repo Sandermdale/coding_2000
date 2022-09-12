@@ -86,7 +86,7 @@ Skriv kode som lagrer dataene som én tibble med anstendige variabelnavn og års
 
 ```{r}
 # Oppgave Ia løses her 
-my_tbl <- as_tibble(df)
+as_tibble(df)
 ```
 
 ### Oppgave Ib: Lag en figur
@@ -105,8 +105,8 @@ Lag en pen figur som viser BNP i tusener av kroner per person, i både løpende 
 ```{r}
 # Oppgave Ib løses her 
 df%>%
-  ggplot(df, aes_(tid, verdi))+
-  geom_point()+
+  ggplot(df, aes(x=tid, y=verdi))%>%
+  geom_point()%>%
   geom_line()
 ```
 
