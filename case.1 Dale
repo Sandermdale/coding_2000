@@ -1,3 +1,7 @@
+\-\--
+
+\-\--
+
 Denne oppgaven er tilpasset fra [Case 1](https://uit-sok-1004-h21.github.io/case_1_bnp.html), skrevet av Øystein Myrland for kurset SOK-1004, høsten 2021. Eventuelle feil og mangler er mine egne. Rett spørsmål og kommentarer til [even.c.hvinden\@uit.no](mailto:even.c.hvinden@uit.no).
 
 ## Instruksjoner
@@ -86,9 +90,11 @@ Skriv kode som lagrer dataene som én tibble med anstendige variabelnavn og års
 
 ```{r}
 # Oppgave Ia løses her 
+tbl_df <- as_tibble(df)
+  rename(.var = statistikkvariabel)%>%
+  rename(.tid = Tid)%>%
+  rename(.verdi = value)
 
-as_tibble (df)
-#A tibble: 104x2
 ```
 
 ### Oppgave Ib: Lag en figur
