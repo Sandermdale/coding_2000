@@ -91,8 +91,12 @@ Skriv kode som lagrer dataene som én tibble med anstendige variabelnavn og års
 ```{r}
 # Oppgave Ia løses her 
 
-tbl_df <- as_tibble(df)
-print(tbl_df)
+tbl_df <- tibble(
+  df,
+  .rows = NULL,
+  .name_repair = c("check_unique", "unique", "universal", "minimal")
+)%>%
+  rename(tid = Tid)
 
 
 
