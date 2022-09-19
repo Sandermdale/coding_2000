@@ -90,10 +90,11 @@ Skriv kode som lagrer dataene som én tibble med anstendige variabelnavn og års
 
 ```{r}
 # Oppgave Ia løses her 
+
 tbl_df <- as_tibble(df)
-  rename(.var = statistikkvariabel)%>%
-  rename(.tid = Tid)%>%
-  rename(.verdi = value)
+print(tbl_df)
+
+
 
 ```
 
