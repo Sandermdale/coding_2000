@@ -148,7 +148,7 @@ Beskriv konkret hva koden gjorde. Sammenlign `df` og `df_wide`.
 
 *\[Besvar oppgave IIa her\]*
 
-Med denne koden
+Med denne koden laget vi en nytt datasett under df_wide som gjorde at de tre kollonnene var BNP, tid og BNP med faste priser. med hjelp av denne koden har vi også gjort tabellen mer ryddig enn hvis vi skal sammenlignet med datataen i df. i df_wide har vi valgt fakotrene BNP, BNP faste priser og tid noe som gjør den mer oversiktlig og lettere og lese den, men i DF har vi tid verdi og statistikkvariabell.
 
 ## Oppgave IIb: Beregn vekst
 
@@ -156,13 +156,13 @@ Til å beregne endring er funksjonen `lag()` meget nyttig. I denne konteksten er
 
 ```{r}
 df_wide <- df_wide %>%
-  mutate(LBNP = lag(BNP,n=1L)) %>%
-  mutate(LMEMOBNP = lag(MEMOBNP,n=1L))
+  mutate(LBNP = lag(Bruttonasjonalprodukt,n=1L)) %>%
+  mutate(LMEMOBNP = lag('MEMO: Bruttonasjonalprodukt. Faste 2015-priser',n=1L))
 
 # legger variablene i rekkefølge
 
 df_wide <- df_wide %>%
-  relocate("LBNP", .before = "MEMOBNP")
+  relocate("LBNP", .before = 'MEMO: Bruttonasjonalprodukt. Faste 2015-priser')
 
 df_wide
 ```
@@ -173,6 +173,7 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 
 ```{r}
 # Besvar oppgave IIb her d
+dbnp <- 
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
