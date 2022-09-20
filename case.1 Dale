@@ -173,7 +173,7 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 
 ```{r}
 # Besvar oppgave IIb her d
-dbnp <- 
+dbnp <-  muta
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
