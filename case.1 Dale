@@ -107,8 +107,8 @@ str(bnp)
 Følgende kode skaper en enkel figur.
 
 ```{r}
-df %>%
-  filter(var == "BNP") %>%
+bnp %>%
+  filter(var == "Bruttonasjonalprodukt") %>%
   ggplot(aes(x=tid,y=verdi)) +
   geom_line()
 ```
@@ -117,8 +117,10 @@ Lag en pen figur som viser BNP i tusener av kroner per person, i både løpende 
 
 ```{r}
 # Oppgave Ib løses her 
-ggplot(data = df)%>%
-  
+bnp %>%
+  filter(var == "Bruttonasjonalprodukt") %>%
+  ggplot(aes(x=tid,y=verdi)) +
+  geom_line(colour = "blue")
 ```
 
 *\[Besvar oppgave 1b her\]*
