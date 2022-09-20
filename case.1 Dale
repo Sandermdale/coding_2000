@@ -117,11 +117,7 @@ Lag en pen figur som viser BNP i tusener av kroner per person, i både løpende 
 
 ```{r}
 # Oppgave Ib løses her 
-bnp %>%
-  filter(var == "Bruttonasjonalprodukt") %>%
-  ggplot(aes(x=tid)) +
-  geom_line(aes(y=verdi), colour = "red")+
-  geom_line(aes(y=verdi), colour = "blue")
+
 
 ```
 
@@ -170,7 +166,7 @@ Hvis vi bruker den matematiske notasjonen diskutert tidligere så har vi nå kol
 Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP` og `MEMOBNP` i `df_wide` og lagre de som `DBNP` og `DMEMOBNP`.
 
 ```{r}
-# Besvar oppgave IIb her 
+# Besvar oppgave IIb her d
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
