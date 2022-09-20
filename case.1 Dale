@@ -91,14 +91,14 @@ Skriv kode som lagrer dataene som én tibble med anstendige variabelnavn og års
 ```{r}
 # Oppgave Ia løses her 
 
-tbl_df <- tibble(
-  df,
-  .rows = NULL,
-  .name_repair = c("check_unique", "unique", "universal", "minimal")
-)%>%
-  rename(tid = Tid)
+bnp <- df[[1]]
 
-
+bnp <- bnp%>% 
+  mutate(år = as.integer(år))%>%
+  rename(var = statistikkvariabel)%>%
+  rename(tid = år)%>%
+  rename(verdi = value)
+str(bnp)
 
 ```
 
