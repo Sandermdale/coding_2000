@@ -119,8 +119,10 @@ Lag en pen figur som viser BNP i tusener av kroner per person, i både løpende 
 # Oppgave Ib løses her 
 bnp %>%
   filter(var == "Bruttonasjonalprodukt") %>%
-  ggplot(aes(x=tid,y=verdi)) +
-  geom_line(colour = "blue")
+  ggplot(aes(x=tid)) +
+  geom_line(aes(y=verdi), colour = "red")+
+  geom_line(aes(y=verdi), colour = "blue")
+
 ```
 
 *\[Besvar oppgave 1b her\]*
