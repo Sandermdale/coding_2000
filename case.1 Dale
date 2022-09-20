@@ -117,8 +117,12 @@ Lag en pen figur som viser BNP i tusener av kroner per person, i både løpende 
 
 ```{r}
 # Oppgave Ib løses her 
-
-
+bnp%>%
+  mutate(per_tusen = verdi/1000)%>%
+  filter(tid >= 2000)%>%
+  ggplot(aes(x=tid, y=per_tusen, col=var))+
+  geom_line()+
+  theme_bw()
 ```
 
 *\[Besvar oppgave 1b her\]*
@@ -136,13 +140,15 @@ I mange tilfeller er vi interesserte i relativ vekst: Hvor mye økte BNP, relati
 Vi skal lage to variable `dBNP` og `dMEMOBNP` som viser relativ endring i `BNP` og `MEMOBNP`. Til dette formålet skal vi bruke kommandoene `pivot_wide()` og `pivot_long()` til å omorganisere dataene. Jeg anbefaler dere først å lese [kapittel 12.3](https://r4ds.had.co.nz/tidy-data.html#pivoting) i pensum. Betrakt følgende kode.
 
 ```{r}
-df_wide <- df %>%
+df_wide <- bnp %>%
   pivot_wider(names_from = var, values_from = verdi) 
 ```
 
 Beskriv konkret hva koden gjorde. Sammenlign `df` og `df_wide`.
 
 *\[Besvar oppgave IIa her\]*
+
+Med denne koden
 
 ## Oppgave IIb: Beregn vekst
 
