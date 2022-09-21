@@ -182,8 +182,10 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 
 ```{r}
 # Besvar oppgave IIb her d
+
+
 bnp_wide <- bnp_wide%>%
-  mutate(DBNP = (('Bruttonasjonalprodukt' -LBNP)/LBNP)*100)%>%
+  mutate(DBNP =(('Bruttonasjonalprodukt'-LBNP)/LBNP)*100)%>%
   mutate(DMEMOBNP = ((('MEMO: Bruttonasjonalprodukt. Faste 2015-priser' -LMEMOBNP)/LMEMOBNP))*100)
 
 bnp_wide
@@ -191,6 +193,9 @@ bnp_wide
 bnp_wide <- bnp_wide%>%
   relocate("DMEMOBNP", .after = "LMEMOBNP")%>%
   relocate("DBNP", .after = "LBNP")
+
+
+
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
