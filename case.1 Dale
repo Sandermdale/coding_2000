@@ -127,6 +127,8 @@ bnp%>%
 
 *\[Besvar oppgave 1b her\]*
 
+som vi kan se i grafen har grafen som inneholder data fra bruttonasjonalprodukt hvor prisene øker forholdsvis til resten av verden og vi får derfor en graf som har en veldig stor økning. men derimot med grafen til de med fast pris er det en mer jevn økning for de bruker samme priser hvert år. grunnen for at de ikke har lik økning er for aller priser er blitt dyrere og det er blitt dyrer å drive/lage produkter og etc. med de faste prisene blir ikke grafen påvirket av f.eks finanskrisen og vil ikke være en realistik graf for å vise hvordan BNP er hver enkelt år. men det grafen med faste priser viser oss er hvordan f.eks 2000 er sammenlignet med prisne vi hadde i 2015 slik vi kan se hvilket år ville vært det "beste".
+
 ## II. Transformasjon, visualisering
 
 Våre data er en tidsserie, hvilket betyr at rekkefølgen i observasjonene er ordnet etter tid. Vi skal nå regne prosentvis, årlig endring. La $x_t$ være BNP i år $t$. For eksempel vil $x_{1970}$ være $23616$.
@@ -173,7 +175,9 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 
 ```{r}
 # Besvar oppgave IIb her d
-dbnp <-  muta
+df_wide <- df_wide%>%
+  mutate(DBNP = x="Bruttonasjonalprodukt", n=x_{t}-x_{t-1})%>%
+  mutate(DMEMOBNP = )
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
