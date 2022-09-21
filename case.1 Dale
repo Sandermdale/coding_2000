@@ -107,7 +107,7 @@ str(bnp)
 Følgende kode skaper en enkel figur.
 
 ```{r}
-bnp %>%
+ bnp %>%
   filter(var == "Bruttonasjonalprodukt") %>%
   ggplot(aes(x=tid,y=verdi)) +
   geom_line()
@@ -142,7 +142,7 @@ I mange tilfeller er vi interesserte i relativ vekst: Hvor mye økte BNP, relati
 Vi skal lage to variable `dBNP` og `dMEMOBNP` som viser relativ endring i `BNP` og `MEMOBNP`. Til dette formålet skal vi bruke kommandoene `pivot_wide()` og `pivot_long()` til å omorganisere dataene. Jeg anbefaler dere først å lese [kapittel 12.3](https://r4ds.had.co.nz/tidy-data.html#pivoting) i pensum. Betrakt følgende kode.
 
 ```{r}
-df_wide <- bnp %>%
+bnp_wide <- bnp %>%
   pivot_wider(names_from = var, values_from = verdi) 
 ```
 
@@ -157,16 +157,16 @@ Med denne koden laget vi en nytt datasett under df_wide som gjorde at de tre kol
 Til å beregne endring er funksjonen `lag()` meget nyttig. I denne konteksten er begrepet *lag* et engelsk verb som beskriver foregående observasjon. Bruker vi funksjoenen `lag()` på en variabel (kolonne) så returnerer den en ny kolonne hvor verdien er lik foregående observasjon. Betrakt følgende kode:
 
 ```{r}
-df_wide <- df_wide %>%
+bnp_wide <- bnp_wide %>%
   mutate(LBNP = lag(Bruttonasjonalprodukt,n=1L)) %>%
   mutate(LMEMOBNP = lag('MEMO: Bruttonasjonalprodukt. Faste 2015-priser',n=1L))
 
 # legger variablene i rekkefølge
 
-df_wide <- df_wide %>%
+bnp_wide <- bnp_wide %>%
   relocate("LBNP", .before = 'MEMO: Bruttonasjonalprodukt. Faste 2015-priser')
 
-df_wide
+bnp_wide
 ```
 
 Hvis vi bruker den matematiske notasjonen diskutert tidligere så har vi nå kolonner med $x_{t}$ (`BNP`, `MEMOBNP`) og $x_{t-1}$ (`LBNP`, `LMEMOBNP`).
@@ -175,9 +175,15 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 
 ```{r}
 # Besvar oppgave IIb her d
-df_wide <- df_wide%>%
-  mutate(DBNP = x="Bruttonasjonalprodukt", n=x_{t}-x_{t-1})%>%
-  mutate(DMEMOBNP = )
+bnp_wide <- bnp_wide%>%
+  mutate(BNP = (('Bruttonasjonalprodukt' -LBNP)/LBNP)*100)%>%
+  mutate(DMEMOBNP = ((('MEMO: Bruttonasjonalprodukt. Faste 2015-priser'-LMEMOBNP)/LMEMOBNP))*100)
+
+bnp_wide
+
+bnp_wide <- bnp_wide%>%
+  relocate("DMEMOBNP", .after = "LMEMOBNP")%>%
+  relocate("DBNP", .after = "LBNP")
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
@@ -188,6 +194,10 @@ Bruk nå funksjonen `pivot_longer()` til å transformere `df_wide` til det oppri
 
 ```{r}
 # Besvar oppgave IIc 
+bnp_wide <- bnp_wide%>%
+  relocate("MEMO: Bruttonasjonalprodukt. Faste 2015-priser", .before= "LBNP")
+bnp_long <- bnp_wide%>%
+  pivot_longer(2:3,names_to = "var", values_to = "verdi")
 ```
 
 ## Oppgave IId: Figur med vekst
