@@ -176,7 +176,7 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 ```{r}
 # Besvar oppgave IIb her d
 bnp_wide <- bnp_wide%>%
-  mutate(BNP = (('Bruttonasjonalprodukt' -LBNP)/LBNP)*100)%>%
+  mutate(DBNP = ((Bruttonasjonalprodukt -LBNP)/LBNP)*100)%>%
   mutate(DMEMOBNP = ((('MEMO: Bruttonasjonalprodukt. Faste 2015-priser'-LMEMOBNP)/LMEMOBNP))*100)
 
 bnp_wide
@@ -207,5 +207,6 @@ Lag en pen figur med prosentvis vekst i nominelt og reelt BNP per person fra 197
 **Merknad:** Det er en del støy i data. Prøv å kombinere `geom_point()` og `geom_smooth()` for å få et bedre inntrykk av den langsiktige utviklingen.
 
 ```{r}
-# Besvar oppgave IId her
+# Besvar oppgave IId
+Bru
 ```
