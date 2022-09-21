@@ -208,5 +208,8 @@ Lag en pen figur med prosentvis vekst i nominelt og reelt BNP per person fra 197
 
 ```{r}
 # Besvar oppgave IId
-Bru
+bnp_long%>%
+  ggplot(aes(x=tid, y=verdi, col=var))+
+  geom_point()+
+  geom_smooth()
 ```
