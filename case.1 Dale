@@ -192,15 +192,6 @@ bnp_wide <- bnp_wide%>%
   relocate("DMEMOBNP", .after = "LMEMOBNP")%>%
   relocate("DBNP", .after = "LBNP")
 
-
- 
-
-
-
-
-
-
-
 ```
 
 ## Oppgave IIc: Omorganisere datasett med `pivot_longer()`
@@ -225,6 +216,8 @@ Lag en pen figur med prosentvis vekst i nominelt og reelt BNP per person fra 197
 
 ```{r}
 # Besvar oppgave IId
+bnp_long%>%
+  mutate(PBNP = )
 bnp_long%>%
   ggplot(aes(x=tid, y=verdi, col=var))+
   geom_point()+
