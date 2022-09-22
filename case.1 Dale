@@ -1,5 +1,3 @@
-
-
 \-\--\
 title: "Case 1"\
 author: "Sander Mogens Dale"\
@@ -166,12 +164,12 @@ Til å beregne endring er funksjonen `lag()` meget nyttig. I denne konteksten er
 ```{r}
 bnp_wide <- bnp_wide %>%
   mutate(LBNP = lag(Bruttonasjonalprodukt,n=1L)) %>%
-  mutate(LMEMOBNP = lag('MEMO: Bruttonasjonalprodukt. Faste 2015-priser',n=1L))
+  mutate(LMEMOBNP = lag(`MEMO: Bruttonasjonalprodukt. Faste 2015-priser`,n=1L))
 
 # legger variablene i rekkefølge
 
 bnp_wide <- bnp_wide %>%
-  relocate("LBNP", .before = 'MEMO: Bruttonasjonalprodukt. Faste 2015-priser')
+  relocate(LBNP, .before = `MEMO: Bruttonasjonalprodukt. Faste 2015-priser`)
 
 bnp_wide
 ```
@@ -185,14 +183,21 @@ Bruk funksjonen `mutate()` til å lage en ny variabel med relativ endring i `BNP
 
 
 bnp_wide <- bnp_wide%>%
-  mutate(DBNP =(('Bruttonasjonalprodukt'-LBNP)/LBNP)*100)%>%
-  mutate(DMEMOBNP = ((('MEMO: Bruttonasjonalprodukt. Faste 2015-priser' -LMEMOBNP)/LMEMOBNP))*100)
+  mutate(DBNP = ((Bruttonasjonalprodukt  -LBNP)/LBNP)*100)%>%
+  mutate(DMEMOBNP = (((`MEMO: Bruttonasjonalprodukt. Faste 2015-priser` - LMEMOBNP)/LMEMOBNP))*100)
 
 bnp_wide
 
 bnp_wide <- bnp_wide%>%
   relocate("DMEMOBNP", .after = "LMEMOBNP")%>%
   relocate("DBNP", .after = "LBNP")
+
+
+ 
+
+
+
+
 
 
 
