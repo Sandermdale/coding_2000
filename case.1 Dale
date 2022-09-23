@@ -229,7 +229,7 @@ bnp_wide%>%
   geom_point()+
   geom_smooth()
 
-#ja det er neg
+#ja det er negativ vekst på grunn av prisøkninger på varer og økning av priser på produksjon.
 
 
  
