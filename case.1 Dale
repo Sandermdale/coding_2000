@@ -217,12 +217,22 @@ Lag en pen figur med prosentvis vekst i nominelt og reelt BNP per person fra 197
 ```{r}
 # Besvar oppgave IId
 
+bnp_wide <- bnp_wide%>%
+  relocate("DBNP", .before = "DMEMOBNP")
+
+bnp_wide <- bnp_wide%>%
+  pivot_longer(6:7, names_to = "var", values_to = "verdi")
+
 bnp_wide%>%
-  ggplot(aes(x=tid)) + 
-  geom_point(aes(y = DBNP), color = "red") + 
-  geom_point(aes(y = DMEMOBNP), color="blue" )+
-  geom_smooth(aes(y = DBNP), color = "red") + 
-  geom_smooth(aes(y = DMEMOBNP), color="blue" )
+  ggplot(aes(x=tid, y=verdi, col=var))+
+  geom_line()+
+  geom_point()+
+  geom_smooth()
+
+#ja det er neg
+
+
+ 
   
 
   
